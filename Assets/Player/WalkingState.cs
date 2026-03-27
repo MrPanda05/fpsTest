@@ -15,15 +15,15 @@ namespace TestGame
         }
         public override void Enter()
         {
-            base.Enter();
             _player.sprint.action.started += StartRunning;
             _player.slide.action.started += StartSliding;
+            base.Enter();
         }
         public override void Exit()
         {
-            base.Exit();
             _player.sprint.action.started -= StartRunning;
             _player.slide.action.started -= StartSliding;
+            base.Exit();
 
         }
         private void StartSliding(InputAction.CallbackContext obj)

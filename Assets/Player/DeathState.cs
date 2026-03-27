@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 namespace TestGame.Player
 {
-    public class TestState1 : HierarchicalState
+    public class DeathState : HierarchicalState
     {
         PlayerPenguin _player;
         public override void Begin()
@@ -15,19 +15,20 @@ namespace TestGame.Player
         public override void Enter()
         {
             base.Enter();
-            _player.slide.action.started += TestMove;
+            _player.jump.action.started += TestMove;
         }
         public override void Exit()
         {
-            _player.slide.action.started -= TestMove;
+            _player.jump.action.started -= TestMove;
             base.Exit();
         }
         private void TestMove(InputAction.CallbackContext obj)
         {
-            print("bosta");
+            _parentStateMachine.TransitioToState("MovementState");
         }
         public override void FixProcess()
         {
+            _player.transform.position += new Vector3(0,_player.move.action.ReadValue<Vector2>().x,0);
         }
     }
 }

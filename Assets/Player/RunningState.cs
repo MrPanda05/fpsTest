@@ -14,13 +14,13 @@ namespace TestGame.Player
         }
         public override void Enter()
         {
-            base.Enter();
             _player.sprint.action.started += StopRunning;
+            base.Enter();
         }
         public override void Exit()
         {
-            base.Exit();
             _player.sprint.action.started -= StopRunning;
+            base.Exit();
 
         }
         private void StopRunning(InputAction.CallbackContext obj)

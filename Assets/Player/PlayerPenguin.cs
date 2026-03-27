@@ -27,7 +27,7 @@ namespace TestGame.Player
         [SerializeField]
         private BaseStats _stats;
         [SerializeField]
-        private InputActionReference move;
+        public InputActionReference move;
         [SerializeField]
         public InputActionReference jump;
         [SerializeField]

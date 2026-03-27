@@ -119,7 +119,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &591860234
+--- !u!1 &159319920
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,45 +127,55 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 591860235}
-  - component: {fileID: 591860236}
+  - component: {fileID: 159319921}
+  - component: {fileID: 159319922}
   m_Layer: 0
-  m_Name: RunningState
+  m_Name: HFSM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &591860235
+--- !u!4 &159319921
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 591860234}
+  m_GameObject: {fileID: 159319920}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1908140777}
+  m_Children:
+  - {fileID: 300871147}
+  - {fileID: 2055663654}
+  - {fileID: 1648374273}
+  m_Father: {fileID: 662476263}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &591860236
+--- !u!114 &159319922
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 591860234}
+  m_GameObject: {fileID: 159319920}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbf4d12a2ea42624294098412053b8f2, type: 3}
+  m_Script: {fileID: 11500000, guid: d01aa586b39d0fb44bcfa54a9004f822, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
-  _parentStateMachine: {fileID: 0}
-  _myStateMachine: {fileID: 0}
---- !u!1 &660783526
+  m_EditorClassIdentifier: Assembly-CSharp::TestGame.Commons.StateMachines.HStateMachine
+  _initialState: {fileID: 300871148}
+  <CurrentState>k__BackingField: {fileID: 0}
+  <IsRoot>k__BackingField: 0
+  parentStateMachine: {fileID: 0}
+  subStateMachines: []
+  myParentState: {fileID: 0}
+  myState: {fileID: 0}
+  _isParentPureFSM: 0
+  _amIPureFSM: 0
+--- !u!1 &300871146
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -173,9 +183,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 660783529}
-  - component: {fileID: 660783527}
-  - component: {fileID: 660783528}
+  - component: {fileID: 300871147}
+  - component: {fileID: 300871148}
+  - component: {fileID: 300871149}
   m_Layer: 0
   m_Name: MovementState
   m_TagString: Untagged
@@ -183,13 +193,30 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &660783527
+--- !u!4 &300871147
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300871146}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 617674565}
+  - {fileID: 1259605117}
+  m_Father: {fileID: 159319921}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &300871148
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 660783526}
+  m_GameObject: {fileID: 300871146}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 155e81c713e81db4e88abc8e58650b8d, type: 3}
@@ -197,37 +224,80 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TestGame.Player.MoveState
   _parentStateMachine: {fileID: 0}
   _myStateMachine: {fileID: 0}
---- !u!114 &660783528
+--- !u!114 &300871149
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 660783526}
+  m_GameObject: {fileID: 300871146}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d01aa586b39d0fb44bcfa54a9004f822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestGame.Commons.StateMachines.HStateMachine
-  _initialState: {fileID: 1908140778}
+  _initialState: {fileID: 0}
   <CurrentState>k__BackingField: {fileID: 0}
---- !u!4 &660783529
+  <IsRoot>k__BackingField: 0
+  parentStateMachine: {fileID: 0}
+  subStateMachines: []
+  myParentState: {fileID: 0}
+  myState: {fileID: 0}
+  _isParentPureFSM: 0
+  _amIPureFSM: 0
+--- !u!1 &617674564
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 617674565}
+  - component: {fileID: 617674566}
+  m_Layer: 0
+  m_Name: FSM hybrid test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &617674565
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 660783526}
+  m_GameObject: {fileID: 617674564}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1908140777}
-  - {fileID: 1018398815}
-  m_Father: {fileID: 697503815}
+  m_Children: []
+  m_Father: {fileID: 300871147}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &617674566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617674564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d01aa586b39d0fb44bcfa54a9004f822, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TestGame.Commons.StateMachines.HStateMachine
+  _initialState: {fileID: 0}
+  <CurrentState>k__BackingField: {fileID: 0}
+  <IsRoot>k__BackingField: 0
+  parentStateMachine: {fileID: 0}
+  subStateMachines: []
+  myParentState: {fileID: 0}
+  myState: {fileID: 0}
+  _isParentPureFSM: 0
+  _amIPureFSM: 0
 --- !u!1 &662476259
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,7 +414,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 697503815}
+  - {fileID: 159319921}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &662476264
@@ -414,7 +484,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TestGame.Player.PlayerPenguin
   <VelocityComponent>k__BackingField: {fileID: 662476265}
   <StaminaComponent>k__BackingField: {fileID: 662476266}
-  <StateMachine>k__BackingField: {fileID: 697503816}
+  <StateMachine>k__BackingField: {fileID: 0}
   _charController: {fileID: 662476264}
   _stats: {fileID: 11400000, guid: dd78e449ca9012c47af5efe9128a18bb, type: 2}
   move: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
@@ -548,53 +618,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
---- !u!1 &697503814
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 697503815}
-  - component: {fileID: 697503816}
-  m_Layer: 0
-  m_Name: HFSM
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &697503815
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 697503814}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 660783529}
-  m_Father: {fileID: 662476263}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &697503816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 697503814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d01aa586b39d0fb44bcfa54a9004f822, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TestGame.Commons.StateMachines.HStateMachine
-  _initialState: {fileID: 660783527}
-  <CurrentState>k__BackingField: {fileID: 0}
 --- !u!1 &823016796
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,7 +755,7 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!1 &1018398814
+--- !u!1 &853096983
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -740,43 +763,96 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1018398815}
-  - component: {fileID: 1018398816}
+  - component: {fileID: 853096984}
+  - component: {fileID: 853096985}
   m_Layer: 0
-  m_Name: AerialState
+  m_Name: FSM Children test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1018398815
+--- !u!4 &853096984
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1018398814}
+  m_GameObject: {fileID: 853096983}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1475335733}
-  m_Father: {fileID: 660783529}
+  - {fileID: 1101668652}
+  m_Father: {fileID: 2055663654}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1018398816
+--- !u!114 &853096985
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1018398814}
+  m_GameObject: {fileID: 853096983}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47188f79dce65bd4b8c13234eada83fb, type: 3}
+  m_Script: {fileID: 11500000, guid: d01aa586b39d0fb44bcfa54a9004f822, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Assembly-CSharp::TestGame.Commons.StateMachines.HStateMachine
+  _initialState: {fileID: 1101668653}
+  <CurrentState>k__BackingField: {fileID: 0}
+  <IsRoot>k__BackingField: 0
+  parentStateMachine: {fileID: 0}
+  subStateMachines: []
+  myParentState: {fileID: 0}
+  myState: {fileID: 0}
+  _isParentPureFSM: 0
+  _amIPureFSM: 0
+--- !u!1 &1101668651
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1101668652}
+  - component: {fileID: 1101668653}
+  m_Layer: 0
+  m_Name: TestState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1101668652
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101668651}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 853096984}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1101668653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101668651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c4383cc1009bdd48862d8fd40fe34f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TestGame.Player.TestState1
   _parentStateMachine: {fileID: 0}
   _myStateMachine: {fileID: 0}
 --- !u!1 &1181142534
@@ -892,7 +968,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1475335732
+--- !u!1 &1259605116
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -900,76 +976,83 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1475335733}
+  - component: {fileID: 1259605117}
   m_Layer: 0
-  m_Name: FallingState
+  m_Name: SubState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1475335733
+--- !u!4 &1259605117
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1475335732}
+  m_GameObject: {fileID: 1259605116}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 300871147}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1648374272
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1648374273}
+  - component: {fileID: 1648374274}
+  m_Layer: 0
+  m_Name: PureFSMTest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1648374273
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648374272}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0013799667, y: 0.99325, z: 0.081799984}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1018398815}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1783424975
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1783424976}
-  - component: {fileID: 1783424977}
-  m_Layer: 0
-  m_Name: WalkingState
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1783424976
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1783424975}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1908140777}
+  m_Father: {fileID: 159319921}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1783424977
+--- !u!114 &1648374274
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1783424975}
+  m_GameObject: {fileID: 1648374272}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f41867e039d45ad438e6ba1f323afb92, type: 3}
+  m_Script: {fileID: 11500000, guid: d01aa586b39d0fb44bcfa54a9004f822, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TestGame.WalkingState
-  _parentStateMachine: {fileID: 0}
-  _myStateMachine: {fileID: 0}
---- !u!1 &1797701848
+  m_EditorClassIdentifier: Assembly-CSharp::TestGame.Commons.StateMachines.HStateMachine
+  _initialState: {fileID: 0}
+  <CurrentState>k__BackingField: {fileID: 0}
+  <IsRoot>k__BackingField: 0
+  parentStateMachine: {fileID: 0}
+  subStateMachines: []
+  myParentState: {fileID: 0}
+  myState: {fileID: 0}
+  _isParentPureFSM: 0
+  _amIPureFSM: 0
+--- !u!1 &2055663653
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -977,140 +1060,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1797701849}
-  - component: {fileID: 1797701850}
+  - component: {fileID: 2055663654}
+  - component: {fileID: 2055663655}
   m_Layer: 0
-  m_Name: SlidingState
+  m_Name: DeathState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1797701849
+--- !u!4 &2055663654
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1797701848}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1908140777}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1797701850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1797701848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c761b9a65c892247a8c8c6789f650cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  _parentStateMachine: {fileID: 0}
-  _myStateMachine: {fileID: 0}
---- !u!1 &1908140776
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1908140777}
-  - component: {fileID: 1908140778}
-  - component: {fileID: 1908140779}
-  m_Layer: 0
-  m_Name: GroundedState
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1908140777
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1908140776}
+  m_GameObject: {fileID: 2055663653}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1783424976}
-  - {fileID: 591860235}
-  - {fileID: 1797701849}
-  - {fileID: 1948724291}
-  m_Father: {fileID: 660783529}
+  - {fileID: 853096984}
+  m_Father: {fileID: 159319921}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1908140778
+--- !u!114 &2055663655
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1908140776}
+  m_GameObject: {fileID: 2055663653}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ac73cdd40390804b9bd0c827c520944, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b1a976be0c9f2a4b894bcfcf56d8aad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
   _parentStateMachine: {fileID: 0}
   _myStateMachine: {fileID: 0}
---- !u!114 &1908140779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1908140776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d01aa586b39d0fb44bcfa54a9004f822, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TestGame.Commons.StateMachines.HStateMachine
-  _initialState: {fileID: 1783424977}
-  <CurrentState>k__BackingField: {fileID: 0}
---- !u!1 &1948724290
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1948724291}
-  m_Layer: 0
-  m_Name: JumpState
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1948724291
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1948724290}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1908140777}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
