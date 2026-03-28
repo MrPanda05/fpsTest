@@ -28,11 +28,11 @@ namespace TestGame
         }
         private void StartSliding(InputAction.CallbackContext obj)
         {
-            _parentStateMachine.TransitioToState("SlidingState");
+            _parentStateMachine.TransitionTo("SlidingState");
         }
         private void StartRunning(InputAction.CallbackContext obj)
         {
-            _parentStateMachine.TransitioToState("RunningState");
+            _parentStateMachine.TransitionTo("RunningState");
         }
       
     }

@@ -1,10 +1,11 @@
 using TestGame.Commons.StateMachines;
+using TestGame.Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace TestGame.Player
+namespace TestGame
 {
-    public class GroundState : HierarchicalState
+    public class TestStat4 : HierarchicalState
     {
         PlayerPenguin _player;
         public override void Begin()
@@ -15,16 +16,16 @@ namespace TestGame.Player
         public override void Enter()
         {
             base.Enter();
-            _player.jump.action.started += jump;
+            _player.slide.action.started += TestMove;
         }
         public override void Exit()
         {
+            _player.slide.action.started -= TestMove;
             base.Exit();
-            _player.jump.action.started -= jump;
         }
-        public void jump(InputAction.CallbackContext obj)
+        private void TestMove(InputAction.CallbackContext obj)
         {
-            _parentStateMachine.TransitionTo("AerialState");
+            print("cu");
         }
     }
 }

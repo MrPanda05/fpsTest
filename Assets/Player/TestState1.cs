@@ -7,6 +7,7 @@ namespace TestGame.Player
     public class TestState1 : HierarchicalState
     {
         PlayerPenguin _player;
+        public string texto;
         public override void Begin()
         {
             base.Begin();
@@ -24,7 +25,7 @@ namespace TestGame.Player
         }
         private void TestMove(InputAction.CallbackContext obj)
         {
-            print("bosta");
+            print(texto);
         }
         public override void FixProcess()
         {

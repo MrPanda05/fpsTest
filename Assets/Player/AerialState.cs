@@ -24,7 +24,7 @@ namespace TestGame.Player
         }
         public void jump(InputAction.CallbackContext obj)
         {
-            _parentStateMachine.TransitioToState("GroundedState");
+            _parentStateMachine.TransitionTo("GroundedState");
         }
     }
 }

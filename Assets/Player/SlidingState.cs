@@ -25,7 +25,7 @@ namespace TestGame.Player
         }
         private void StopSliding(InputAction.CallbackContext obj)
         {
-            _parentStateMachine.TransitioToState("WalkingState");
+            _parentStateMachine.TransitionTo("WalkingState");
         }
     }
 }
