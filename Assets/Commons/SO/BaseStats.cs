@@ -6,6 +6,9 @@ namespace TestGame.Commons.SO
     [CreateAssetMenu(fileName = "Stats",menuName = "ScriptableOjbects/Stats", order = 1)]
     public class BaseStats : ScriptableObject
     {
+
+        [field: SerializeField]
+        public float MaxHealth { get; set; } = 8f;
         [field: SerializeField]
         public float MoveSpeed { get; set; } = 8f;
         [field: SerializeField]

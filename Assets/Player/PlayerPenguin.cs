@@ -21,24 +21,22 @@ namespace TestGame.Player
         [field: SerializeField]
         public StaminaComponent StaminaComponent { get; private set; }
         [field: SerializeField]
+        public HealthComponent HealthComponent { get; private set; }
+        [field: SerializeField]
         public HStateMachine StateMachine { get; private set; }
         [SerializeField]
         private CharacterController _charController;
+        [field: SerializeField]
+        public CameraController CameraController { get; private set; }
         [SerializeField]
         private BaseStats _stats;
-        [SerializeField]
-        public InputActionReference move;
-        [SerializeField]
-        public InputActionReference jump;
-        [SerializeField]
-        public InputActionReference sprint;
-        [SerializeField]
-        public InputActionReference slide;
         private Vector2 _input;
+        [field: SerializeField]
+        public InputActionAsset InputActions { get; private set; }
 
         private void Update()
         {
-            _input = move.action.ReadValue<Vector2>();
+            //_input = move.action.ReadValue<Vector2>();
 
         }
 

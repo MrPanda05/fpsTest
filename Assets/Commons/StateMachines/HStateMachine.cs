@@ -23,7 +23,7 @@ namespace TestGame.Commons.StateMachines
     /// If a child is a hybrid, it will only be active when the component state that is posseses is entered.
     /// If it is a pure state, it will act as expected of a normal state machine.
     /// 
-    /// Note: A pure state must not have a child of pure state machine, if this happen, then it means that the pure state must be a hybrid.
+    /// Note: A pure state should not have a children, as it will not work, if the state needs have children, make them hybrid, this could be a possible issue in the future
     /// 
     /// Possible improvements, a previous state variable, as it currently re-enters on the initial state
     /// </summary>
@@ -71,7 +71,7 @@ namespace TestGame.Commons.StateMachines
         }
         private void Start()
         {
-            if(!ImPure)
+            if(!ImPure && MyState != null)
             {
                 MyState.OnStateEnter += InitializeFSM;
                 MyState.OnStateExit += DisableFSM;
