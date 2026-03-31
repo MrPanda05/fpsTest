@@ -14,5 +14,9 @@ namespace TestGame.Player.States
             _player.InputActions.FindActionMap("Player").Disable();
             base.Exit();
         }
+        public override void FixProcess()
+        {
+            _player.MovePlayer();
+        }
     }
 }

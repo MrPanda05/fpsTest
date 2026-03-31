@@ -20,12 +20,17 @@ namespace TestGame.Commons.StateMachines
         protected HStateMachine _parentStateMachine;
         [SerializeField]
         protected HStateMachine _myStateMachine;
+        protected HierarchicalState _parentState;
         public event Action OnStateEnter;
         public event Action OnStateExit;
         public virtual void Begin()
         {
             _parentStateMachine = transform.parent != null ? transform.parent.GetComponent<HStateMachine>() : null;
             _myStateMachine = GetComponent<HStateMachine>();
+            if(_parentStateMachine != null)
+            {
+                _parentState = _parentStateMachine.MyState;
+            }
         }
         public virtual void Enter()
         {

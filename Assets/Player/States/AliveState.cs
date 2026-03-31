@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace TestGame.Player.States
 {
@@ -17,6 +18,10 @@ namespace TestGame.Player.States
         private void Die()
         {
             _parentStateMachine.TransitionTo("DeathState");
+        }
+        public override void FixProcess()
+        {
+            //_player.InputActions.FindAction("Jump").performed += (InputAction.CallbackContext ojb) => print("jump");
         }
     }
 }

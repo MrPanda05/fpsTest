@@ -39,8 +39,12 @@ namespace TestGame.Commons.StateMachines
         public event Action OnStateChange;
         public HierarchicalState MyState { get; private set; }
         public HierarchicalState ParentState { get; private set; }
-        public bool ImPure { get; private set; }
-        //private List<HStateMachine> _concurrentFSMs = new List<HStateMachine>();
+        public HStateMachine ParentFSM { get; private set; }
+        [field: SerializeField]
+        public bool IsPure { get; private set; }
+        public Action OnInitialize;
+        public Action OnDisableFSM;
+        private List<HStateMachine> _subStateMachines = new List<HStateMachine>();
 
         private void Awake()
         {
@@ -50,17 +54,23 @@ namespace TestGame.Commons.StateMachines
                 return;
             }
             States = new Dictionary<string, HierarchicalState>();
-            //_concurrentFSMs = new List<HStateMachine>();
+            _subStateMachines = new List<HStateMachine>();
             GetRelationShipWithSelf();
             ParentState = transform.parent != null ? transform.parent.GetComponent<HierarchicalState>() : null;
+            ParentFSM = transform.parent != null ? transform.parent.GetComponent<HStateMachine>() : null;
             foreach (Transform child in transform)
             {
                 var state = child.GetComponent<HierarchicalState>();
+                var fsm = child.GetComponent<HStateMachine>();
                 if (state != null)
                 {
                     States[state.name] = state;
                     state.Begin();
-                    state.enabled = false;
+                }
+                if (fsm != null)
+                {
+                    fsm.enabled = false;
+                    _subStateMachines.Add(fsm);
                 }
             }
             if (States.Count == 0)
@@ -71,35 +81,47 @@ namespace TestGame.Commons.StateMachines
         }
         private void Start()
         {
-            if(!ImPure && MyState != null)
-            {
-                MyState.OnStateEnter += InitializeFSM;
-                MyState.OnStateExit += DisableFSM;
-                return;
-            }
-            if (ParentState == null)
-            {
-                InitializeFSM();
-            }
-            else
-            {
-                ParentState.OnStateEnter += InitializeFSM;
-                ParentState.OnStateExit += DisableFSM;
-            }
+            if (ParentState != null && ParentFSM != null) return;
+            InitializeHierarchy();
+            
         }
         private void GetRelationShipWithSelf()
         {
             MyState = GetComponent<HierarchicalState>();
-            ImPure = MyState == null;
+            IsPure = MyState == null;
         }
         public void InitializeFSM()
         {
-            CurrentState = _initialState;
-            CurrentState.enabled = true;
             enabled = true;
-            if(CurrentState != null)
+            CurrentState = _initialState;
+            if (CurrentState != null)
             {
-                CurrentState?.Enter();
+                CurrentState.Enter();
+            }
+            OnInitialize?.Invoke();
+        }
+        public void InitializeHierarchy()
+        {
+            if (ParentFSM != null)
+            {
+                if (MyState != null)
+                {
+                    MyState.OnStateEnter += InitializeFSM;
+                    MyState.OnStateExit += DisableFSM;
+                }
+                else
+                {
+                    ParentFSM.OnInitialize += InitializeFSM;
+                    ParentFSM.OnDisableFSM += DisableFSM;
+                }
+            }
+            foreach (var fsm in _subStateMachines)
+            {
+                fsm.InitializeHierarchy();
+            }
+            if (ParentFSM == null)
+            {
+                InitializeFSM();
             }
         }
         public void DisableFSM()
@@ -108,20 +130,23 @@ namespace TestGame.Commons.StateMachines
             {
                 CurrentState.Exit();
             }
-            CurrentState.enabled = false;
+            OnDisableFSM?.Invoke();
             enabled = false;
         }
         private void OnDestroy()
         {
-            if (MyState != null)
+            if (ParentFSM != null)
             {
-                MyState.OnStateEnter -= InitializeFSM;
-                MyState.OnStateExit -= DisableFSM;
-            }
-            if(ParentState != null)
-            {
-                ParentState.OnStateEnter -= InitializeFSM;
-                ParentState.OnStateExit -= DisableFSM;
+                if (MyState != null)
+                {
+                    MyState.OnStateEnter -= InitializeFSM;
+                    MyState.OnStateExit -= DisableFSM;
+                }
+                else
+                {
+                    ParentFSM.OnInitialize -= InitializeFSM;
+                    ParentFSM.OnDisableFSM -= DisableFSM;
+                }
             }
         }
         private void Update()
@@ -158,9 +183,9 @@ namespace TestGame.Commons.StateMachines
             string oldState = CurrentState.name;
             string newState = key;
             CurrentState.Exit();
-            CurrentState.enabled = false;
+            //CurrentState.enabled = false;
             CurrentState = States[key];
-            CurrentState.enabled = true;
+            //CurrentState.enabled = true;
             CurrentState.Enter();
             OnStateChange?.Invoke();
             OnStateChangeTo?.Invoke(key);

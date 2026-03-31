@@ -183,6 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TestGame.Commons.StateMachines.HStateMachine
   _initialState: {fileID: 1529709488}
   <CurrentState>k__BackingField: {fileID: 0}
+  <IsPure>k__BackingField: 0
 --- !u!1 &104864203
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,7 +336,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 770567211}
-  m_Father: {fileID: 1165446762}
+  m_Father: {fileID: 239503999}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &152023496
 MonoBehaviour:
@@ -351,6 +352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TestGame.Commons.StateMachines.HStateMachine
   _initialState: {fileID: 770567212}
   <CurrentState>k__BackingField: {fileID: 0}
+  <IsPure>k__BackingField: 0
 --- !u!1 &201749648
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,6 +417,7 @@ Transform:
   - {fileID: 1165446762}
   - {fileID: 201749649}
   - {fileID: 1961602765}
+  - {fileID: 152023495}
   m_Father: {fileID: 662476263}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &239504000
@@ -431,6 +434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TestGame.Commons.StateMachines.HStateMachine
   _initialState: {fileID: 1165446763}
   <CurrentState>k__BackingField: {fileID: 0}
+  <IsPure>k__BackingField: 0
 --- !u!1 &282657730
 GameObject:
   m_ObjectHideFlags: 0
@@ -1164,8 +1168,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1165446762}
-  - component: {fileID: 1165446763}
   - component: {fileID: 1165446764}
+  - component: {fileID: 1165446763}
   m_Layer: 0
   m_Name: AliveState
   m_TagString: Untagged
@@ -1187,7 +1191,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 62016539}
-  - {fileID: 152023495}
   m_Father: {fileID: 239503999}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1165446763
@@ -1218,6 +1221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TestGame.Commons.StateMachines.HStateMachine
   _initialState: {fileID: 62016540}
   <CurrentState>k__BackingField: {fileID: 0}
+  <IsPure>k__BackingField: 0
 --- !u!1 &1181142534
 GameObject:
   m_ObjectHideFlags: 0
@@ -1427,6 +1431,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TestGame.Commons.StateMachines.HStateMachine
   _initialState: {fileID: 145555323}
   <CurrentState>k__BackingField: {fileID: 0}
+  <IsPure>k__BackingField: 0
 --- !u!1 &1864225341
 GameObject:
   m_ObjectHideFlags: 0
